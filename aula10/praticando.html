@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Somando numeros naquele pique</h1>
+    <input type="number" name="num1" id="num1"> +
+    <input type="number" name="num2" id="num2">
+    <input type="button" value="somar" onclick="somar()" >
+    <p class="palavra"></p>
+    <script>
+        function somar(){
+        var a = window.document.getElementById('num1')
+        var b = window.document.querySelector('input#num2')
+        var aa = Number(num1.value)
+        var bb = Number(num2.value)
+        var soma = aa + bb
+        var txt = window.document.querySelector('p.palavra')
+        txt.innerText = `a soma dá: ${soma}`
+        }    
+
+    </script>
+</body>
+</html>

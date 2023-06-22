@@ -19,7 +19,7 @@
             align-items: center;
             cursor: pointer;
             margin: auto;
-            font-size: 10px;
+            
         }
         div:hover{
             background-color: black;
@@ -29,12 +29,16 @@
 </head>
 <body>
     <h1>mostrando oque sei fazer com Javascript</h1>
-    <p>vou mudar esse texto</p>
+    <p class="mudanca">vou mudar esse texto</p>
     <div class="alex">divzada</div>
-    <p>mais um textin</p>
+    <p id="ir">mais um textin</p>
     <script>
         var alexandre = window.document.querySelector('div.alex')
-        alexandre.innerText = 'aaaaaaaaa eu vou gozar, vem que eu vou te tacar o piru, aaaaaaaaaaaaaaaaaaaaaaaaaaa eu vou gozar'
+        alexandre.innerText = 'eai galerinha,tudo bem?'
+        var brabo = window.document.getElementsByClassName('mudanca')[0]
+        brabo.innerText = 'mudei.'
+        var bora = document.getElementById('ir')
+        bora.innerHTML = 'mudei esse também.'
     </script>
 </body>
 </html>
