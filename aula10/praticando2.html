@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adição</title>
+    <link rel="shortcut icon" href="mais.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+        *{
+            
+        }
+        body{
+            background-color: #54C8F3;
+            font-family: 'Bruno Ace', cursive;
+        }
+        .container{
+            display: flex;
+            background-color: white;
+            width: 900px;
+            height: 85vh;
+            margin: auto;
+            border-radius: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .titulo{
+            text-align: center;
+            height: 60px;
+
+        }
+        .texto{
+            
+            width: 300px;
+            text-align: center;
+            font-size: 09px;
+        }
+        .tela{
+            background-color: #AAB8A3;
+            width: 300px;
+            height: 45px;
+        }
+        #numero1{
+            margin-top: 20px;
+        }
+        .butao{
+            margin-top: 20px;
+            background-color:#54C8F3 ;
+            border: 1px solid black;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="filho titulo">
+            <h1>calculadora de adição</h1>
+        </div>
+        <div class="filho texto">
+            <p>Essa calculadora foi desenvolvida por Alexandre Estival Da Mata, ela é apenas um exercicio de prática de um inicio do curso de JavaScript.</p>
+        </div>
+        <div>
+            <input type="number" name="numero1" id="numero1">
+        </div>
+        <div>
+            <p>+</p>
+        </div>
+        <div>
+            <input type="number" name="numero2" id="numero2">
+        </div>
+        <div>
+            <input class="butao" type="button" value="somar" onclick="somar()">
+        </div>
+        <div>
+            <p class="res">=</p>
+        </div>
+        
+    </div>
+    <script>
+        
+        function somar(){
+            var a = document.getElementById('numero1')
+            var b = document.getElementById('numero2')
+            var a1 = Number(a.value)
+            var b1 = Number(b.value)
+            var soma = a1 + b1
+            var resultado = document.getElementsByClassName('res')[0]
+            resultado.innerText = 'o resultado da soma é: ' + soma
+        }
+    </script>
+</body>
+</html>
