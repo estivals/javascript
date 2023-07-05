@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <p>pizza, quantidade de fatias:</p>
+        <input type="button" name="botao" id="botao" value="comer tudo" onclick="comerPizza()">
+        <p id="fatias">8</p>
+    </main>
+    <script>
+        function comerPizza(){
+            var a = document.getElementById('fatias')
+            var fatia = Number(a.value)
+            while(fatia >= 2){
+                fatia - 1
+            }
+            a.innerHTML = `você agora tem ${fatia} fatias de pizza!`
+        }
+        
+    </script>
+</body>
+</html>

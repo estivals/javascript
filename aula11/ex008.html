@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran-GO</title>
+    
+</head>
+<body>
+    <div>
+        <h1>
+            Você acaba de passar no radar de velocidade!
+        </h1>
+    </div>
+    <div>
+        <label for="vel">Você estava a quantos km/h?</label>
+        <input type="number" name="vel" id="vel">
+    </div>
+    <div>
+        <input type="button" value="enviar" onclick="testar()">
+    </div>
+    <div>
+        <p class="escrita"></p>
+    </div>
+    <script>
+        function testar(){
+            var a = document.getElementById('vel')
+            var b = Number(a.value)
+            var txt = document.querySelector('p.escrita')
+            if(b > 60 <= 79){
+                txt.innerText = 'Você ultrapassou a velocidade permitida, Multa no valor de R$ 130,16'
+            }
+            
+        }
+    </script>
+</body>
+</html>

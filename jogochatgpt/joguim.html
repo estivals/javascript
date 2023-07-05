@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arcade Game</title>
+  <style>
+    body{
+        background-color: #6607eb00;
+    }
+    #game-board {
+      width: 400px;
+      height: 400px;
+      border: 1px solid black;
+      position: relative;
+      margin: auto;
+    }
+
+    .player {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .obstacle {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+    }
+
+    .point {
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      position: absolute;
+    }
+
+    #score-board {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    h1{
+        text-align: center;
+    }
+    div#score-board{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Arcade Game</h1>
+
+  <div id="game-board">
+    <div class="player"></div>
+    <div class="obstacle"></div>
+    <div class="point"></div>
+  </div>
+
+  <div id="score-board">
+    Score: <span id="score">0</span>
+  </div>
+
+  <script>
+    // Variáveis do jogo
+    var player = document.querySelector('.player');
+    var obstacle = document.querySelector('.obstacle');
+    var point = document.querySelector('.point');
+    var score = 0;
+    var level = 1;
+    var maxLevel = 8;
+
+    // Função para atualizar a pontuação
+    function updateScore() {
+      var scoreElement = document.querySelector('#score');
+      scoreElement.innerHTML = score;
+    }
+
+    // Função para verificar colisão entre o jogador e o obstáculo
+    function checkCollision() {
+      var playerRect = player.getBoundingClientRect();
+      var obstacleRect = obstacle.getBoundingClientRect();
+      var pointRect = point.getBoundingClientRect();
+
+      if (playerRect.top < obstacleRect.bottom &&
+          playerRect.bottom > obstacleRect.top &&
+          playerRect.left < obstacleRect.right &&
+          playerRect.right > obstacleRect.left) {
+        // Colisão com obstáculo ocorreu
+        gameOver();
+      }
+
+      if (playerRect.top < pointRect.bottom &&
+          playerRect.bottom > pointRect.top &&
+          playerRect.left < pointRect.right &&
+          playerRect.right > pointRect.left) {
+        // Colisão com ponto ocorreu
+        score += 10;
+        updateScore();
+        resetPoint();
+      }
+    }
+
+    // Função para avançar para a próxima fase
+    function nextLevel() {
+      if (level === maxLevel) {
+        // O jogador venceu todas as fases
+        alert('Você venceu o jogo!');
+        resetGame();
+      } else {
+        // Avançar para a próxima fase
+        level++;
+        alert('Parabéns! Avançando para a fase ' + level);
+        resetLevel();
+      }
+    }
+
+    // Função para resetar o jogo
+    function resetGame() {
+      score = 0;
+      level = 1;
+      updateScore();
+      resetLevel();
+      resetPoint();
+    }
+
+    // Função para resetar a fase atual
+    function resetLevel() {
+      // Reposicionar o jogador e o obstáculo
+      player.style.top = '0';
+      player.style.left = '0';
+      obstacle.style.top = Math.random() * 350 + 'px';
+      obstacle.style.left = Math.random() * 350 + 'px';
+    }
+
+    // Função para resetar o ponto
+    function resetPoint() {
+      // Reposicionar o ponto
+      point.style.top = Math.random() * 350 + 'px';
+      point.style.left = Math.random() * 350 + 'px';
+    }
+
+    // Função para tratar o fim do jogo
+    function gameOver() {
+      alert('Fim do jogo. Sua pontuação final é ' + score);
+      resetGame();
+    }
+
+    // Evento de clique para mover o jogador
+    document.addEventListener('keydown', function(event) {
+      var key = event.key;
+
+      if (key === 'ArrowUp') {
+        // Mover para cima
+        var top = parseInt(player.style.top);
+        if (top > 0) {
+          player.style.top = top - 10 + 'px';
+        }
+      } else if (key === 'ArrowDown') {
+        // Mover para baixo
+        var top = parseInt(player.style.top);
+        if (top < 350) {
+          player.style.top = top + 10 + 'px';
+        }
+      } else if (key === 'ArrowLeft') {
+        // Mover para a esquerda
+        var left = parseInt(player.style.left);
+        if (left > 0) {
+          player.style.left = left - 10 + 'px';
+        }
+      } else if (key === 'ArrowRight') {
+        // Mover para a direita
+        var left = parseInt(player.style.left);
+        if (left < 350) {
+          player.style.left = left + 10 + 'px';
+        }
+      }
+
+      // Verificar colisão após cada movimento do jogador
+      checkCollision();
+    });
+
+    // Iniciar o jogo
+    resetLevel();
+    resetPoint();
+    updateScore();
+  </script>
+</body>
+</html>
+
